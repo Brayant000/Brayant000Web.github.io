@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - CRUD</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🔐 Iniciar Sesión</h1>
+        <form id="loginForm" class="card">
+            <div class="form-group">
+                <label for="loginEmail">Email</label>
+                <input type="email" id="loginEmail" name="email" required placeholder="tu@email.com">
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Contraseña</label>
+                <input type="password" id="loginPassword" name="password" required placeholder="••••••••">
+            </div>
+            <button type="submit" class="btn btn-primary">🚀 Iniciar Sesión</button>
+        </form>
+        <div class="navigation-links">
+            <a href="index.html">¿No tienes cuenta? Regístrate aquí</a>
+        </div>
+        <div id="loginMessage" class="message"></div>
+    </div>
+    <script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración de Usuarios</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="dashboard-header">
+            <div>
+                <h1>👥 Administración de Usuarios</h1>
+                <p id="userWelcome">Bienvenido al sistema</p>
+            </div>
+            <button id="logoutBtn" class="btn btn-secondary">🚪 Cerrar Sesión</button>
+        </header>
+
+        <div class="stats-card">
+            <h3>📊 Estadísticas</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number" id="totalUsers">0</span>
+                    <span class="stat-label">Usuarios Totales</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="todayUsers">0</span>
+                    <span class="stat-label">Registrados Hoy</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-header">
+                <h2>📋 Lista de Usuarios Registrados</h2>
+                <button id="refreshBtn" class="btn btn-outline">🔄 Actualizar</button>
+            </div>
+            
+            <div id="usersList" class="users-grid">
+                </div>
+        </div>
+    </div>
+
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>✏️ Editar Usuario</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <form id="editUserForm">
+                <input type="hidden" id="editUserId">
+                <div class="form-group">
+                    <label for="editUserName">Nombre completo *</label>
+                    <input type="text" id="editUserName" required>
+                </div>
+                <div class="form-group">
+                    <label for="editUserEmail">Email *</label>
+                    <input type="email" id="editUserEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="editUserPhone">Teléfono</label>
+                    <input type="tel" id="editUserPhone">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">💾 Guardar Cambios</button>
+                    <button type="button" id="cancelEdit" class="btn btn-secondary">❌ Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🗑️ Eliminar Usuario</h3>
+                <span class="close-delete-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="warning-message">
+                    <span class="warning-icon">⚠️</span>
+                    <p id="deleteMessage">¿Estás seguro de que quieres eliminar este usuario?</p>
+                </div>
+                <div class="user-preview" id="userPreview">
+                    </div>
+            </div>
+            <div class="form-actions">
+                <button id="confirmDelete" class="btn btn-danger">✅ Sí, Eliminar</button>
+                <button id="cancelDelete" class="btn btn-secondary">❌ Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

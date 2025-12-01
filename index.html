@@ -1,74 +1,34 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bienvenido a mi Web</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    html, body {
-      height: 100%;
-    }
-    body {
-      display: flex;
-      flex-direction: column;
-    }
-    main {
-      flex: 1;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario - CRUD</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="#">Electiva 2</a>
-    </div>
-  </nav>
-
-  <header class="bg-light text-center py-5 mb-4 shadow-sm">
-    <div class="container">
-      <h1 class="display-4 fw-bold">¡Hola! Soy Jose Raul 👋</h1>
-      <p class="lead">Bienvenido a mi página en GitHub Pages</p>
-    </div>
-  </header>
-
-  <main class="container mb-5">
-    <div class="row g-4 justify-content-center">
-
-      <div class="col-md-6">
-        <div class="card shadow border-0">
-          <div class="card-body">
-            <ul class="list-unstyled mb-0">
-              <li><strong>Nombre:</strong> Jose Raul</li>
-              <li><strong>Matrícula:</strong> 2023-1034</li>
-              <li><strong>Profesor:</strong> Elvys Cruz</li>
-              <li><strong>Materia:</strong> Electiva 2</li>
-              <li><strong>Fecha:</strong> 27/09/2025</li>
-            </ul>
-          </div>
+        <h1>📝 Registro de Usuario</h1>
+        <form id="registerForm" class="card">
+            <div class="form-group">
+                <label for="name">Nombre completo *</label>
+                <input type="text" id="name" name="name" required placeholder="Ej: Juan Pérez">
+            </div>
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required placeholder="ejemplo@correo.com">
+            </div>
+            <div class="form-group">
+                <label for="phone">Teléfono</label>
+                <input type="tel" id="phone" name="phone" placeholder="+52 123 456 7890">
+            </div>
+            <button type="submit" class="btn btn-primary">✅ Registrar Usuario</button>
+        </form>
+        <div class="navigation-links">
+            <a href="login.html">¿Ya tienes cuenta? Inicia sesión</a>
         </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="card shadow border-0">
-          <div class="card-body">
-            <h5 class="card-title text-primary fw-bold">Electiva 2</h5>
-            <p class="card-text">
-              Esta es una práctica de electiva 2.
-            </p>
-          </div>
-        </div>
-      </div>
-
+        <div id="message" class="message"></div>
     </div>
-  </main>
-
-  <footer class="bg-dark text-white text-center py-3 mt-auto">
-    <p class="mb-0">Construido en GitHub Pages</p>
-  </footer>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
