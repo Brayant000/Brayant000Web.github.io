@@ -12,6 +12,75 @@ class UserRegistration {
                 this.registerUser();
             });
         }
+
+        // Modo oscuro
+        this.setupThemeToggle();
+
+        // Toggle de mostrar/ocultar contraseña
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+        if (togglePassword && passwordInput) {
+            togglePassword.addEventListener('click', () => {
+                const type = passwordInput.type === 'password' ? 'text' : 'password';
+                passwordInput.type = type;
+                togglePassword.textContent = type === 'password' ? '👁️' : '🙈';
+            });
+
+            // Validación de fortaleza de contraseña en tiempo real
+            passwordInput.addEventListener('input', () => {
+                this.checkPasswordStrength(passwordInput.value);
+            });
+        }
+    }
+
+    setupThemeToggle() {
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeToggle.classList.add('active');
+            }
+
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                themeToggle.classList.toggle('active');
+                const isDark = document.body.classList.contains('dark-mode');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            });
+        }
+    }
+
+    checkPasswordStrength(password) {
+        const strengthBar = document.getElementById('passwordStrengthBar');
+        const hint = document.getElementById('passwordHint');
+        
+        if (!strengthBar || !hint) return;
+
+        let strength = 0;
+        let message = '';
+
+        if (password.length >= 6) strength++;
+        if (password.length >= 10) strength++;
+        if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength++;
+        if (/[0-9]/.test(password)) strength++;
+        if (/[^A-Za-z0-9]/.test(password)) strength++;
+
+        strengthBar.className = 'password-strength-bar';
+        
+        if (password.length === 0) {
+            strengthBar.className = 'password-strength-bar';
+            hint.textContent = 'La contraseña debe tener al menos 6 caracteres';
+        } else if (strength <= 2) {
+            strengthBar.classList.add('weak');
+            hint.textContent = '⚠️ Contraseña débil - Considera agregar mayúsculas, números o símbolos';
+        } else if (strength <= 4) {
+            strengthBar.classList.add('medium');
+            hint.textContent = '⚡ Contraseña media - Casi perfecta!';
+        } else {
+            strengthBar.classList.add('strong');
+            hint.textContent = '✅ Contraseña fuerte!';
+        }
     }
 
     registerUser() {
