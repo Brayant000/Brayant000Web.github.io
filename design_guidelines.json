@@ -1,0 +1,124 @@
+{
+  "project_name": "Super Gamer",
+  "design_philosophy": {
+    "identity": "E1: The Anti-AI Designer",
+    "core_concept": "The Dualverse: Cyberpunk Arcade vs. Pop-Art Comic",
+    "emotional_tone": "High-Energy, Immersive, Bold, Nostalgic yet Futuristic",
+    "principles": [
+      "Fusion over Imitation: Mix retro arcade aesthetics with modern clean UI",
+      "Emotion First: Every interaction should feel 'punchy' or 'electric'",
+      "Contrast is King: Deep blacks vs. Neon (Gaming) and White vs. Primary Colors (Heroes)"
+    ]
+  },
+  "typography": {
+    "font_family": {
+      "headings": "Syne, sans-serif",
+      "body": "Outfit, sans-serif",
+      "accent": "Rajdhani, sans-serif"
+    },
+    "imports": [
+      "@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Rajdhani:wght@500;600;700&family=Syne:wght@400;700;800&display=swap');"
+    ],
+    "usage_rules": {
+      "headings": "Use 'Syne' with font-weight 700 or 800. Tight tracking (-0.02em).",
+      "body": "Use 'Outfit' for all readable text. High legibility.",
+      "ui_elements": "Use 'Rajdhani' for stats, buttons, and technical data (gaming side)."
+    }
+  },
+  "colors": {
+    "theme_strategy": "Dual-Mode Personality",
+    "palettes": {
+      "gaming_mode": {
+        "background": "#050505",
+        "surface": "#0f0f11",
+        "primary": "#00f3ff",
+        "secondary": "#7000ff",
+        "accent": "#39ff14",
+        "text_primary": "#ffffff",
+        "text_secondary": "#a1a1aa",
+        "border": "rgba(0, 243, 255, 0.2)"
+      },
+      "superhero_mode": {
+        "background": "#ffffff",
+        "surface": "#f4f4f5",
+        "primary": "#e62429",
+        "secondary": "#0057e7",
+        "accent": "#fbd020",
+        "text_primary": "#09090b",
+        "text_secondary": "#52525b",
+        "border": "#000000"
+      }
+    },
+    "gradients": {
+      "gaming_glow": "linear-gradient(135deg, #00f3ff 0%, #7000ff 100%)",
+      "hero_pop": "linear-gradient(135deg, #e62429 0%, #fbd020 100%)"
+    }
+  },
+  "layout_and_grid": {
+    "spacing_system": "Tailwind Scale (p-4, p-8, p-12, p-16, p-24)",
+    "grid_strategy": "Bento Grid (Asymmetrical)",
+    "container_rules": "Max-width 1400px. Always use px-6 or px-8 on mobile.",
+    "z_index_layers": {
+      "background": -1,
+      "content": 10,
+      "sticky_nav": 50,
+      "modal": 100
+    }
+  },
+  "components": {
+    "buttons": {
+      "base_style": "px-8 py-3 rounded-full font-bold transition-all duration-300 transform hover:scale-105 active:scale-95",
+      "gaming_variant": "bg-transparent border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black shadow-[0_0_15px_rgba(0,243,255,0.5)]",
+      "hero_variant": "bg-red-600 text-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none"
+    },
+    "cards": {
+      "gaming_style": "Glassmorphism: bg-black/40 backdrop-blur-xl border border-white/10 hover:border-cyan-400/50 transition-colors",
+      "hero_style": "Pop-Art: bg-white border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]"
+    },
+    "inputs": {
+      "style": "h-12 bg-secondary/20 border-2 border-transparent focus:border-primary outline-none rounded-lg px-4 transition-all"
+    }
+  },
+  "assets": {
+    "image_urls": {
+      "gaming_hero": "https://images.pexels.com/photos/7773751/pexels-photo-7773751.jpeg",
+      "gaming_bg": "https://images.pexels.com/photos/4389796/pexels-photo-4389796.jpeg",
+      "hero_bg": "https://images.pexels.com/photos/7768663/pexels-photo-7768663.jpeg",
+      "hero_action": "https://images.pexels.com/photos/15344060/pexels-photo-15344060.jpeg",
+      "abstract_tech": "https://images.pexels.com/photos/2092075/pexels-photo-2092075.jpeg"
+    },
+    "icons": "Use 'lucide-react' for UI icons. Use 'GameController' for games, 'Zap' for heroes."
+  },
+  "motion": {
+    "libraries": ["framer-motion"],
+    "animations": {
+      "hover_lift": "whileHover={{ y: -5 }}",
+      "page_transition": "initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}",
+      "stagger_children": "variants={{ show: { transition: { staggerChildren: 0.1 } } }}"
+    }
+  },
+  "accessibility": {
+    "rules": [
+      "Ensure 4.5:1 contrast ratio for text.",
+      "Focus states must be visible (ring-2 ring-primary).",
+      "All images must have alt text.",
+      "Interactive elements must have aria-labels if no text is present."
+    ]
+  },
+  "instructions_to_main_agent": {
+    "step_1": "Install fonts in index.css using the import rule.",
+    "step_2": "Configure tailwind.config.js to extend colors with the 'gaming' and 'hero' palettes.",
+    "step_3": "Create a 'ThemeContext' to manage the 'gaming' vs 'hero' mode (which maps to dark/light class).",
+    "step_4": "Build the 'SplitScreen' landing page component first.",
+    "step_5": "Implement the 'Card' component with a 'variant' prop (gaming/hero).",
+    "step_6": "Ensure the 'Login/Register' forms use the specific input styles defined above."
+  },
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "Do not use gradients for text unless it is a massive headline.",
+    "Avoid generic 'Inter' font. Use 'Syne' for personality.",
+    "Make sure the 'Hero' mode feels like a comic book (borders, hard shadows).",
+    "Make sure the 'Gaming' mode feels like a HUD (glows, transparency).",
+    "Use 'sonner' for all toast notifications.",
+    "All interactive elements must have data-testid attributes."
+  ]
+}

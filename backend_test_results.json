@@ -1,0 +1,82 @@
+{
+  "summary": {
+    "tests_run": 12,
+    "tests_passed": 11,
+    "success_rate": 91.66666666666666,
+    "timestamp": "2025-12-10T16:03:27.957146"
+  },
+  "detailed_results": [
+    {
+      "test": "User Registration",
+      "success": true,
+      "details": "",
+      "timestamp": "2025-12-10T16:03:27.184501"
+    },
+    {
+      "test": "User Login",
+      "success": true,
+      "details": "",
+      "timestamp": "2025-12-10T16:03:27.449660"
+    },
+    {
+      "test": "Get Current User",
+      "success": true,
+      "details": "",
+      "timestamp": "2025-12-10T16:03:27.493554"
+    },
+    {
+      "test": "Unauthorized Access Protection",
+      "success": false,
+      "details": "Expected 401, got 403 - Not authenticated",
+      "timestamp": "2025-12-10T16:03:27.528775"
+    },
+    {
+      "test": "Create Game Item",
+      "success": true,
+      "details": "",
+      "timestamp": "2025-12-10T16:03:27.619921"
+    },
+    {
+      "test": "Create Hero Item",
+      "success": true,
+      "details": "",
+      "timestamp": "2025-12-10T16:03:27.662026"
+    },
+    {
+      "test": "Get Games List",
+      "success": true,
+      "details": "",
+      "timestamp": "2025-12-10T16:03:27.699534"
+    },
+    {
+      "test": "Get Heroes List",
+      "success": true,
+      "details": "",
+      "timestamp": "2025-12-10T16:03:27.775825"
+    },
+    {
+      "test": "Create Comment (games)",
+      "success": true,
+      "details": "",
+      "timestamp": "2025-12-10T16:03:27.828006"
+    },
+    {
+      "test": "Get Comments (games)",
+      "success": true,
+      "details": "",
+      "timestamp": "2025-12-10T16:03:27.873029"
+    },
+    {
+      "test": "Create Comment (heroes)",
+      "success": true,
+      "details": "",
+      "timestamp": "2025-12-10T16:03:27.914556"
+    },
+    {
+      "test": "Get Comments (heroes)",
+      "success": true,
+      "details": "",
+      "timestamp": "2025-12-10T16:03:27.956471"
+    }
+  ]
+}
