@@ -156,6 +156,80 @@ class UserDashboard {
             }
         });
     }
+    // NUEVOS MÉTODOS: Búsqueda, Filtrado y Ordenamiento
+    applyFiltersAndSort() {
+        // 1. Filtrar por búsqueda
+        this.filteredUsers = this.users.filter(user => {
+            if (!this.searchTerm) return true;
+            return user.name.toLowerCase().includes(this.searchTerm) ||
+                   user.email.toLowerCase().includes(this.searchTerm) ||
+                   (user.phone && user.phone.includes(this.searchTerm));
+        });
+
+        // 2. Filtrar por fecha
+        if (this.filterBy !== 'all') {
+            const now = new Date();
+            this.filteredUsers = this.filteredUsers.filter(user => {
+                const userDate = new Date(user.createdAt);
+                const diffTime = now - userDate;
+                const diffDays = diffTime / (1000 * 60 * 60 * 24);
+
+                switch (this.filterBy) {
+                    case 'today':
+                        return userDate.toDateString() === now.toDateString();
+                    case 'week':
+                        return diffDays <= 7;
+                    case 'month':
+                        return diffDays <= 30;
+                    default:
+                        return true;
+                }
+            });
+        }
+
+        // 3. Ordenar
+        this.filteredUsers.sort((a, b) => {
+            switch (this.sortBy) {
+                case 'name-asc':
+                    return a.name.localeCompare(b.name);
+                case 'name-desc':
+                    return b.name.localeCompare(a.name);
+                case 'date-desc':
+                    return new Date(b.createdAt) - new Date(a.createdAt);
+                case 'date-asc':
+                    return new Date(a.createdAt) - new Date(b.createdAt);
+                case 'email-asc':
+                    return a.email.localeCompare(b.email);
+                default:
+                    return 0;
+            }
+        });
+
+        this.renderUsers();
+        this.updateResultsCounter();
+    }
+
+    updateResultsCounter() {
+        const counter = document.getElementById('resultsCounter');
+        if (counter) {
+            const count = this.filteredUsers.length;
+            const total = this.users.length;
+            if (count === total) {
+                counter.textContent = `Mostrando ${count} usuario${count !== 1 ? 's' : ''}`;
+            } else {
+                counter.textContent = `Mostrando ${count} de ${total} usuarios`;
+            }
+        }
+    }
+
+    getInitials(name) {
+        return name
+            .split(' ')
+            .map(word => word[0])
+            .join('')
+            .toUpperCase()
+            .substring(0, 2);
+    }
 
     // --- MÉTODOS DE EDICIÓN (UPDATE) ---
 
