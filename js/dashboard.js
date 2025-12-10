@@ -66,7 +66,17 @@ class UserDashboard {
             return;
         }
 
-        this.users.forEach(user => {
+        if (this.filteredUsers.length === 0) {
+            usersList.innerHTML = `
+                <div class="no-users">
+                    <h3>🔍 No se encontraron usuarios</h3>
+                    <p>Intenta ajustar los filtros de búsqueda</p>
+                </div>
+            `;
+            return;
+        }
+
+        this.filteredUsers.forEach(user => {
             const userCard = this.createUserCard(user);
             usersList.appendChild(userCard);
         });
