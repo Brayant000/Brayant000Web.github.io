@@ -2,8 +2,11 @@ class UserDashboard {
     constructor() {
         this.users = JSON.parse(localStorage.getItem('users')) || [];
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        // Nueva propiedad para rastrear el ID del usuario a eliminar
-        this.userToDelete = null; 
+        this.userToDelete = null;
+        this.filteredUsers = [...this.users]; // Array para usuarios filtrados
+        this.searchTerm = "";
+        this.sortBy = "name-asc";
+        this.filterBy = "all";
         this.init();
     }
 
