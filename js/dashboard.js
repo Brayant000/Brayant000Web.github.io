@@ -13,7 +13,8 @@ class UserDashboard {
     init() {
         this.checkAuthentication();
         this.loadUserData();
-        this.renderUsers();
+        this.filteredUsers = [...this.users];
+        this.applyFiltersAndSort();
         this.setupEventListeners();
         
         console.log('Dashboard inicializado. Usuarios:', this.users.length);
