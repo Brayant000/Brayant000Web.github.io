@@ -86,7 +86,9 @@ class UserDashboard {
     createUserCard(user) {
         const card = document.createElement('div');
         card.className = 'user-card';
+        const initials = this.getInitials(user.name);
         card.innerHTML = `
+            <div class="user-avatar" data-testid="user-avatar-${user.id}">${initials}</div>
             <h3>👤 ${user.name}</h3>
             <p><strong>📧 Email:</strong> ${user.email}</p>
             <p><strong>📞 Teléfono:</strong> ${user.phone || 'No especificado'}</p>
@@ -95,10 +97,10 @@ class UserDashboard {
             <p><strong>✏️ Actualizado:</strong> ${this.formatDate(user.updatedAt)}</p>
             
             <div class="user-actions">
-                <button class="btn-edit" data-id="${user.id}">
+                <button class="btn-edit" data-id="${user.id}" data-testid="edit-btn-${user.id}">
                     ✏️ Editar
                 </button>
-                <button class="btn-delete" data-id="${user.id}">
+                <button class="btn-delete" data-id="${user.id}" data-testid="delete-btn-${user.id}">
                     🗑️ Eliminar
                 </button>
             </div>
