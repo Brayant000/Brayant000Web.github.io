@@ -15,6 +15,38 @@ class AuthSystem {
         }
 
         this.checkAuthStatus();
+        
+        // Modo oscuro
+        this.setupThemeToggle();
+
+        // Toggle de mostrar/ocultar contraseña en login
+        const toggleLoginPassword = document.getElementById('toggleLoginPassword');
+        const loginPasswordInput = document.getElementById('loginPassword');
+        if (toggleLoginPassword && loginPasswordInput) {
+            toggleLoginPassword.addEventListener('click', () => {
+                const type = loginPasswordInput.type === 'password' ? 'text' : 'password';
+                loginPasswordInput.type = type;
+                toggleLoginPassword.textContent = type === 'password' ? '👁️' : '🙈';
+            });
+        }
+    }
+
+    setupThemeToggle() {
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeToggle.classList.add('active');
+            }
+
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                themeToggle.classList.toggle('active');
+                const isDark = document.body.classList.contains('dark-mode');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            });
+        }
     }
 
     handleLogin() {
