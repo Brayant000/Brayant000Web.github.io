@@ -146,7 +146,7 @@ class UserDashboard {
             }
         });
 
-        // Modal de Eliminación events (NUEVOS)
+        // Modal de Eliminación events
         document.getElementById('confirmDelete').addEventListener('click', () => this.confirmDelete());
         document.getElementById('cancelDelete').addEventListener('click', () => this.hideDeleteModal());
         document.querySelector('.close-delete-modal').addEventListener('click', () => this.hideDeleteModal());
