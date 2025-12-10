@@ -415,8 +415,9 @@ class UserDashboard {
                 this.users.splice(userIndex, 1);
                 localStorage.setItem('users', JSON.stringify(this.users));
                 
+                this.filteredUsers = [...this.users];
                 this.hideDeleteModal();
-                this.renderUsers();
+                this.applyFiltersAndSort();
                 this.updateStats();
                 this.showToast('✅ Usuario eliminado exitosamente!');
                 
