@@ -22,6 +22,17 @@
                 <label for="phone">Teléfono</label>
                 <input type="tel" id="phone" name="phone" placeholder="+52 123 456 7890">
             </div>
+            <div class="form-group">
+                <label for="password">Contraseña *</label>
+                <div class="password-input-wrapper">
+                    <input type="password" id="password" name="password" required placeholder="Mínimo 6 caracteres" data-testid="password-input">
+                    <span class="toggle-password" id="togglePassword">👁️</span>
+                </div>
+                <div class="password-strength" id="passwordStrength">
+                    <div class="password-strength-bar" id="passwordStrengthBar"></div>
+                </div>
+                <p class="password-hint" id="passwordHint">La contraseña debe tener al menos 6 caracteres</p>
+            </div>
             <button type="submit" class="btn btn-primary">✅ Registrar Usuario</button>
         </form>
         <div class="navigation-links">
