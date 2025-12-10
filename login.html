@@ -25,7 +25,10 @@
             </div>
             <div class="form-group">
                 <label for="loginPassword">Contraseña</label>
-                <input type="password" id="loginPassword" name="password" required placeholder="••••••••">
+                <div class="password-input-wrapper">
+                    <input type="password" id="loginPassword" name="password" required placeholder="••••••••" data-testid="login-password-input">
+                    <span class="toggle-password" id="toggleLoginPassword">👁️</span>
+                </div>
             </div>
             <button type="submit" class="btn btn-primary">🚀 Iniciar Sesión</button>
         </form>
