@@ -421,3 +421,483 @@ h1 {
     background: #c82333;
     transform: translateY(-1px);
 }
+
+
+/* ========================================
+   MEJORAS VISUALES Y MODO OSCURO
+======================================== */
+
+/* Variables CSS para modo claro y oscuro */
+:root {
+    --bg-gradient-start: #667eea;
+    --bg-gradient-end: #764ba2;
+    --card-bg: white;
+    --text-primary: #333;
+    --text-secondary: #666;
+    --text-light: white;
+    --border-color: #e1e5e9;
+    --input-bg: white;
+    --stat-bg: #f8f9fa;
+    --modal-overlay: rgba(0,0,0,0.5);
+    --shadow-sm: 0 5px 15px rgba(0,0,0,0.1);
+    --shadow-md: 0 10px 30px rgba(0,0,0,0.2);
+    --shadow-lg: 0 20px 60px rgba(0,0,0,0.3);
+    --accent-color: #667eea;
+    --accent-hover: #5a6fd8;
+    --success-bg: #d4edda;
+    --success-text: #155724;
+    --error-bg: #f8d7da;
+    --error-text: #721c24;
+}
+
+/* Tema Oscuro */
+body.dark-mode {
+    --bg-gradient-start: #1a1a2e;
+    --bg-gradient-end: #16213e;
+    --card-bg: #2d3748;
+    --text-primary: #e2e8f0;
+    --text-secondary: #cbd5e0;
+    --text-light: #e2e8f0;
+    --border-color: #4a5568;
+    --input-bg: #1a202c;
+    --stat-bg: #1a202c;
+    --modal-overlay: rgba(0,0,0,0.8);
+    --shadow-sm: 0 5px 15px rgba(0,0,0,0.4);
+    --shadow-md: 0 10px 30px rgba(0,0,0,0.5);
+    --shadow-lg: 0 20px 60px rgba(0,0,0,0.6);
+    --accent-color: #667eea;
+    --accent-hover: #5a6fd8;
+    --success-bg: #2d5016;
+    --success-text: #a3e635;
+    --error-bg: #5c1a1a;
+    --error-text: #fca5a5;
+}
+
+/* Transiciones suaves para cambio de tema */
+body, .card, .user-card, .stats-card, .modal-content, input, button {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Actualizar body con variables */
+body {
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+}
+
+.card, .stats-card, .modal-content {
+    background: var(--card-bg);
+    box-shadow: var(--shadow-md);
+}
+
+.form-group label, .section-header h2, .user-card h3, h1 {
+    color: var(--text-primary);
+}
+
+h1 {
+    color: var(--text-light) !important;
+}
+
+.form-group input {
+    background: var(--input-bg);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.stat-item {
+    background: var(--stat-bg);
+}
+
+.user-card {
+    background: var(--stat-bg);
+    border-color: var(--border-color);
+}
+
+.user-card p, .stat-label {
+    color: var(--text-secondary);
+}
+
+/* Toggle de Modo Oscuro */
+.theme-toggle-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--card-bg);
+    padding: 10px 15px;
+    border-radius: 50px;
+    box-shadow: var(--shadow-sm);
+    animation: slideInRight 0.5s ease;
+}
+
+.theme-toggle {
+    position: relative;
+    width: 60px;
+    height: 30px;
+    background: #ccc;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.theme-toggle.active {
+    background: var(--accent-color);
+}
+
+.theme-toggle-slider {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle.active .theme-toggle-slider {
+    transform: translateX(30px);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Aplicar animaciones */
+.card {
+    animation: fadeIn 0.5s ease;
+}
+
+.user-card {
+    animation: scaleIn 0.4s ease;
+}
+
+.stats-card {
+    animation: slideInLeft 0.5s ease;
+}
+
+/* Avatar con iniciales */
+.user-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+    animation: pulse 2s infinite;
+}
+
+/* Mejoras de búsqueda y filtros */
+.search-filter-container {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+    animation: slideInLeft 0.5s ease;
+}
+
+.search-box {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 45px 12px 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 16px;
+    background: var(--input-bg);
+    color: var(--text-primary);
+    transition: all 0.3s;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    font-size: 18px;
+}
+
+.filter-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-group label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 14px;
+}
+
+.filter-group select {
+    padding: 10px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 14px;
+    background: var(--input-bg);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.filter-group select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+/* Contador de resultados */
+.results-counter {
+    text-align: center;
+    padding: 10px;
+    background: var(--stat-bg);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Loading Spinner */
+.spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--modal-overlay);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    backdrop-filter: blur(5px);
+}
+
+.loading-spinner {
+    width: 60px;
+    height: 60px;
+    border: 5px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+/* Validación de contraseña */
+.password-input-wrapper {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--text-secondary);
+    user-select: none;
+    transition: color 0.3s;
+}
+
+.toggle-password:hover {
+    color: var(--text-primary);
+}
+
+.password-strength {
+    margin-top: 8px;
+    height: 4px;
+    background: var(--border-color);
+    border-radius: 2px;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.password-strength-bar {
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s, background 0.3s;
+}
+
+.password-strength-bar.weak {
+    width: 33%;
+    background: #dc3545;
+}
+
+.password-strength-bar.medium {
+    width: 66%;
+    background: #ffc107;
+}
+
+.password-strength-bar.strong {
+    width: 100%;
+    background: #28a745;
+}
+
+.password-hint {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 5px;
+}
+
+/* Mejoras en botones */
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Toast mejorado */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--card-bg);
+    color: var(--text-primary);
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-md);
+    z-index: 10000;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 250px;
+    animation: slideInRight 0.3s ease;
+    border-left: 4px solid var(--accent-color);
+}
+
+.toast.success {
+    border-left-color: #28a745;
+}
+
+.toast.error {
+    border-left-color: #dc3545;
+}
+
+.toast-icon {
+    font-size: 24px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .filter-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .theme-toggle-container {
+        top: 10px;
+        right: 10px;
+        padding: 8px 12px;
+    }
+    
+    .users-grid {
+        grid-template-columns: 1fr;
+    }
+}
