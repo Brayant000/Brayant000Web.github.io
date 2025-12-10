@@ -156,6 +156,49 @@ class UserDashboard {
                 this.hideDeleteModal();
             }
         });
+
+        // NUEVAS FUNCIONALIDADES: Búsqueda, Filtrado y Ordenamiento
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                this.searchTerm = e.target.value.toLowerCase();
+                this.applyFiltersAndSort();
+            });
+        }
+
+        const sortBy = document.getElementById('sortBy');
+        if (sortBy) {
+            sortBy.addEventListener('change', (e) => {
+                this.sortBy = e.target.value;
+                this.applyFiltersAndSort();
+            });
+        }
+
+        const filterBy = document.getElementById('filterBy');
+        if (filterBy) {
+            filterBy.addEventListener('change', (e) => {
+                this.filterBy = e.target.value;
+                this.applyFiltersAndSort();
+            });
+        }
+
+        // Toggle de modo oscuro
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeToggle.classList.add('active');
+            }
+
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-mode');
+                themeToggle.classList.toggle('active');
+                const isDark = document.body.classList.contains('dark-mode');
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                this.showToast(isDark ? '🌙 Modo oscuro activado' : '☀️ Modo claro activado');
+            });
+        }
     }
     // NUEVOS MÉTODOS: Búsqueda, Filtrado y Ordenamiento
     applyFiltersAndSort() {
