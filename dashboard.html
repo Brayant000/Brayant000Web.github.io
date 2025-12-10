@@ -39,6 +39,36 @@
             </div>
         </div>
 
+        <!-- Búsqueda y Filtros -->
+        <div class="search-filter-container">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="🔍 Buscar por nombre, email o teléfono..." data-testid="search-input">
+                <span class="search-icon">🔍</span>
+            </div>
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label for="sortBy">Ordenar por:</label>
+                    <select id="sortBy" data-testid="sort-select">
+                        <option value="name-asc">Nombre (A-Z)</option>
+                        <option value="name-desc">Nombre (Z-A)</option>
+                        <option value="date-desc">Más recientes</option>
+                        <option value="date-asc">Más antiguos</option>
+                        <option value="email-asc">Email (A-Z)</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="filterBy">Filtrar por:</label>
+                    <select id="filterBy" data-testid="filter-select">
+                        <option value="all">Todos los usuarios</option>
+                        <option value="today">Registrados hoy</option>
+                        <option value="week">Últimos 7 días</option>
+                        <option value="month">Último mes</option>
+                    </select>
+                </div>
+            </div>
+            <div class="results-counter" id="resultsCounter">Mostrando 0 usuarios</div>
+        </div>
+
         <div class="card">
             <div class="section-header">
                 <h2>📋 Lista de Usuarios Registrados</h2>
