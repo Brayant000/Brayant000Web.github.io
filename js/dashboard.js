@@ -364,8 +364,9 @@ class UserDashboard {
             };
             
             localStorage.setItem('users', JSON.stringify(this.users));
+            this.filteredUsers = [...this.users];
             this.hideEditModal();
-            this.renderUsers();
+            this.applyFiltersAndSort();
             this.updateStats();
             this.showToast('✅ Usuario actualizado exitosamente!');
         }
