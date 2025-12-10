@@ -119,7 +119,8 @@ class UserDashboard {
         // Refresh
         document.getElementById('refreshBtn').addEventListener('click', () => {
             this.users = JSON.parse(localStorage.getItem('users')) || [];
-            this.renderUsers();
+            this.filteredUsers = [...this.users];
+            this.applyFiltersAndSort();
             this.updateStats();
             this.showToast('✅ Lista actualizada');
         });
