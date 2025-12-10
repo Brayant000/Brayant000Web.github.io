@@ -131,7 +131,7 @@ class UserDashboard {
                 this.editUser(e.target.dataset.id);
             }
             if (e.target.classList.contains('btn-delete')) {
-                this.deleteUser(e.target.dataset.id); // Llama al nuevo método
+                this.deleteUser(e.target.dataset.id);
             }
         });
         
